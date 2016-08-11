@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qcategories>
+    <qcategory name="Verantwortung">
+        <qcatquestions>
+            <qcatquestiontxt>Verkehrsvorschriften besagen, dass zwei verantwortungsvolle Posten im Ruderboot besetzt sein müssen – und ein Ruderer kann beides zugleich sein:</qcatquestiontxt>
+            <allanswers>
+                <answer>Schlagmann und Steuermann</answer>
+                <answer>Bootsführer und Ruderwart</answer>
+                <answer>Schiffsführer und Bootsobmann</answer>  
+                <answer>Steuermann und Rudergänger</answer>  
+                <answer>Schiffsführer und Rudergänger</answer> 
+                <answer>Bootsobmann und Steuermann</answer>                                                                                
+            </allanswers>
+            <correctanswers>
+                <correctanswer>Schiffsführer und Rudergänger</correctanswer>
+                <correctanswer>Bootsobmann und Steuermann</correctanswer>                              
+            </correctanswers>
+        </qcatquestions>
+        
+        <qcatquestions>
+            <qcatquestiontxt>Im Auto ist der Hauptverantwortliche immer der Fahrer, der hinter dem Steuer sitzt, im Ruderboot immer</qcatquestiontxt>
+            <allanswers>
+                <answer>derjenige, der auf dem Steuerplatz sitzt</answer>
+                <answer>der Älteste an Bord</answer>
+                <answer>der Schlagmann</answer>  
+                <answer>der Bugmann</answer>  
+                <answer>der Bootsobmann</answer>                                                                                
+            </allanswers>
+            <correctanswers>
+                <correctanswer>der Bootsobmann</correctanswer>                             
+            </correctanswers>
+        </qcatquestions>  
+        
+        <qcatquestions>
+            <qcatquestiontxt>Wenn der steuernde Ruderer ausnahmsweise keine Steuerberechtigung hat,</qcatquestiontxt>
+            <allanswers>
+                <answer>gibt der Bugmann alle Kommandos</answer>
+                <answer>wird der Steuernde vom Schlagmann ständig eingewiesen</answer>
+                <answer>gibt der Erfahrenste an Bord den Kurs an</answer>  
+                <answer>wird der Steuernde vom Bootsobmann ständig eingewiesen</answer>                                                                                 
+            </allanswers>
+            <correctanswers>
+                <correctanswer>wird der Steuernde vom Bootsobmann ständig eingewiesen</correctanswer>                             
+            </correctanswers>
+        </qcatquestions> 
+        
+        <qcatquestions>
+            <qcatquestiontxt>Der Bootsobmann im Boot mit Steuersitz,</qcatquestiontxt>
+            <allanswers>
+                <answer>muss immer am Steuer sitzen</answer>
+                <answer>kann nicht zugleich Steuermann sein</answer>
+                <answer>kann, anstatt zu steuern, irgendeinem an Bord den Steuerplatz und damit die Verantwortung für Kurs, Manöver, Kommandos und alle Entscheidungen an Bord überlassen.</answer>  
+                <answer>muss nicht steuern, wenn er einen Steuerberechtigten als „Rudergänger“ einsetzt</answer>                                                                                
+            </allanswers>
+            <correctanswers>
+                <correctanswer>muss nicht steuern, wenn er einen Steuerberechtigten als „Rudergänger“ einsetzt</correctanswer>                             
+            </correctanswers>
+        </qcatquestions>  
+
+        <qcatquestions>
+            <qcatquestiontxt>Der amtliche Nachweis über eine Ruderfahrt, in dem man auch den Verantwortlichen, die Mannschaft, die Strecke nachschlagen kann, ist</qcatquestiontxt>
+            <allanswers>
+                <answer>das Fahrtenbuch</answer>
+                <answer>das Fahrtenprogramm</answer>
+                <answer>die Ruderordnung</answer>                                                                                 
+            </allanswers>
+            <correctanswers>
+                <correctanswer>das Fahrtenbuch</correctanswer>                             
+            </correctanswers>
+        </qcatquestions>     
+
+        <qcatquestions>
+            <qcatquestiontxt>Ein Steuermann, der auf dem Wasser einen Unfall verursacht, weil er nicht aufgepasst („geschlafen“) hat,</qcatquestiontxt>
+            <allanswers>
+                <answer>kann mit Bußgeld oder härter bestraft werden und muss womöglich Schadenersatz leisten</answer>
+                <answer>kann mit Bußgeld oder härter bestraft werden. Er und die Mannschaft müssen womöglich Schadenersatz leisten</answer>
+                <answer>kann nicht bestraft werden, muss aber womöglich Schadenersatz leisten</answer>   
+                <answer>kann mit Bußgeld oder härter bestraft werden, braucht aber eingetretenen Schaden nicht zu ersetzen</answer>                                                                                                 
+            </allanswers>
+            <correctanswers>
+                <correctanswer>kann mit Bußgeld oder härter bestraft werden und muss womöglich Schadenersatz leisten</correctanswer>                             
+            </correctanswers>
+        </qcatquestions>                                                                                                                                                                                                                                                   
+
+        <qcatquestions>
+            <qcatquestiontxt>Ein Bootsobmann, der Verkehrsregeln nicht beachtet, damit einen Unfall verursacht und einem fremden Sportboot und seinen Insassen Schaden zugefügt hat,</qcatquestiontxt>
+            <allanswers>
+                <answer>muss Schadenersatz leisten und kann dafür bestraft werden</answer>
+                <answer>muss entweder Schadenersatz leisten oder kann dafür bestraft werden, beides ist nicht möglich</answer>
+                <answer>muss nur dann Schadenersatz leisten, wenn er dafür bestraft worden ist</answer>   
+                <answer>wird nur dann bestraft, wenn er keinen Schadenersatz leistet.</answer>                                                                                                 
+            </allanswers>
+            <correctanswers>
+                <correctanswer>muss Schadenersatz leisten und kann dafür bestraft werden</correctanswer>                             
+            </correctanswers>
+        </qcatquestions>                 
+        
+    </qcategory>
+   
+    <qcategory name="Steuern">
+        <qcatquestions>
+            <qcatquestiontxt>Schnulli besagen, dass zwei verantwortungsvolle Posten im Ruderboot besetzt sein müssen – und ein Ruderer kann beides zugleich sein:</qcatquestiontxt>
+            <allanswers>
+                <answer>Schlagmann und Steuermann</answer>
+                <answer>Bootsführer und Ruderwart</answer>
+                <answer>Schiffsführer und Bootsobmann</answer>  
+                <answer>Steuermann und Rudergänger</answer>  
+                <answer>Schiffsführer und Rudergänger</answer> 
+                <answer>Bootsobmann und Steuermann</answer>                                                                                
+            </allanswers>
+            <correctanswers>
+                <correctanswer>Schiffsführer und Rudergänger</correctanswer>
+                <correctanswer>Bootsobmann und Steuermann</correctanswer>                              
+            </correctanswers>
+        </qcatquestions>
+        
+        <qcatquestions>
+            <qcatquestiontxt>Im Auto ist der Hauptverantwortliche immer der Fahrer, der hinter dem Steuer sitzt, im Ruderboot immer</qcatquestiontxt>
+            <allanswers>
+                <answer>derjenige, der auf dem Steuerplatz sitzt</answer>
+                <answer>der Älteste an Bord</answer>
+                <answer>der Schlagmann</answer>  
+                <answer>der Bugmann</answer>  
+                <answer>der Bootsobmann</answer>                                                                                
+            </allanswers>
+            <correctanswers>
+                <correctanswer>der Bootsobmann</correctanswer>                             
+            </correctanswers>
+        </qcatquestions>  
+        
+        <qcatquestions>
+            <qcatquestiontxt>Wenn der steuernde Ruderer ausnahmsweise keine Steuerberechtigung hat,</qcatquestiontxt>
+            <allanswers>
+                <answer>gibt der Bugmann alle Kommandos</answer>
+                <answer>wird der Steuernde vom Schlagmann ständig eingewiesen</answer>
+                <answer>gibt der Erfahrenste an Bord den Kurs an</answer>  
+                <answer>wird der Steuernde vom Bootsobmann ständig eingewiesen</answer>                                                                                 
+            </allanswers>
+            <correctanswers>
+                <correctanswer>wird der Steuernde vom Bootsobmann ständig eingewiesen</correctanswer>                             
+            </correctanswers>
+        </qcatquestions> 
+        
+        <qcatquestions>
+            <qcatquestiontxt>Der Bootsobmann im Boot mit Steuersitz,</qcatquestiontxt>
+            <allanswers>
+                <answer>muss immer am Steuer sitzen</answer>
+                <answer>kann nicht zugleich Steuermann sein</answer>
+                <answer>kann, anstatt zu steuern, irgendeinem an Bord den Steuerplatz und damit die Verantwortung für Kurs, Manöver, Kommandos und alle Entscheidungen an Bord überlassen.</answer>  
+                <answer>muss nicht steuern, wenn er einen Steuerberechtigten als „Rudergänger“ einsetzt</answer>                                                                                
+            </allanswers>
+            <correctanswers>
+                <correctanswer>muss nicht steuern, wenn er einen Steuerberechtigten als „Rudergänger“ einsetzt</correctanswer>                             
+            </correctanswers>
+        </qcatquestions>  
+
+        <qcatquestions>
+            <qcatquestiontxt>Der amtliche Nachweis über eine Ruderfahrt, in dem man auch den Verantwortlichen, die Mannschaft, die Strecke nachschlagen kann, ist</qcatquestiontxt>
+            <allanswers>
+                <answer>das Fahrtenbuch</answer>
+                <answer>das Fahrtenprogramm</answer>
+                <answer>die Ruderordnung</answer>                                                                                 
+            </allanswers>
+            <correctanswers>
+                <correctanswer>das Fahrtenbuch</correctanswer>                             
+            </correctanswers>
+        </qcatquestions>     
+
+        <qcatquestions>
+            <qcatquestiontxt>Ein Steuermann, der auf dem Wasser einen Unfall verursacht, weil er nicht aufgepasst („geschlafen“) hat,</qcatquestiontxt>
+            <allanswers>
+                <answer>kann mit Bußgeld oder härter bestraft werden und muss womöglich Schadenersatz leisten</answer>
+                <answer>kann mit Bußgeld oder härter bestraft werden. Er und die Mannschaft müssen womöglich Schadenersatz leisten</answer>
+                <answer>kann nicht bestraft werden, muss aber womöglich Schadenersatz leisten</answer>   
+                <answer>kann mit Bußgeld oder härter bestraft werden, braucht aber eingetretenen Schaden nicht zu ersetzen</answer>                                                                                                 
+            </allanswers>
+            <correctanswers>
+                <correctanswer>kann mit Bußgeld oder härter bestraft werden und muss womöglich Schadenersatz leisten</correctanswer>                             
+            </correctanswers>
+        </qcatquestions>                                                                                                                                                                                                                                                   
+
+        <qcatquestions>
+            <qcatquestiontxt>Ein Bootsobmann, der Verkehrsregeln nicht beachtet, damit einen Unfall verursacht und einem fremden Sportboot und seinen Insassen Schaden zugefügt hat,</qcatquestiontxt>
+            <allanswers>
+                <answer>muss Schadenersatz leisten und kann dafür bestraft werden</answer>
+                <answer>muss entweder Schadenersatz leisten oder kann dafür bestraft werden, beides ist nicht möglich</answer>
+                <answer>muss nur dann Schadenersatz leisten, wenn er dafür bestraft worden ist</answer>   
+                <answer>wird nur dann bestraft, wenn er keinen Schadenersatz leistet.</answer>                                                                                                 
+            </allanswers>
+            <correctanswers>
+                <correctanswer>muss Schadenersatz leisten und kann dafür bestraft werden</correctanswer>                             
+            </correctanswers>
+        </qcatquestions>                 
+        
+    </qcategory>   
+           
+<qcategory name="Auf der Spree">
+    <qcatquestions>
+        <qcatquestiontxt>Was mache ich heute?</qcatquestiontxt>
+        <allanswers>
+            <answer>Schlafen</answer>
+            <answer>Essen</answer>
+        </allanswers>
+        <correctanswers>
+            <correctanswer>Schlafen</correctanswer>
+        </correctanswers>
+    </qcatquestions>
+    <qcatquestions>
+        <qcatquestiontxt>Was mache ich morgen?</qcatquestiontxt>
+        <allanswers>
+            <answer>Rudern</answer>
+            <answer>Schwimmen</answer>
+        </allanswers>
+        <correctanswers>
+            <correctanswer>Rudern</correctanswer>
+        </correctanswers>
+    </qcatquestions>
+</qcategory>
+
+<qcategory name="Bötchen fahren in Berlin">
+    <qcatquestions>
+        <qcatquestiontxt>Was ist ein Boot?</qcatquestiontxt>
+        <allanswers>
+            <answer>Ein Gefährt</answer>
+            <answer>Ein Instrument</answer>
+        </allanswers>
+        <correctanswers>
+            <correctanswer>Ein Instrument</correctanswer>
+        </correctanswers>
+    </qcatquestions>
+    <qcatquestions>
+        <qcatquestiontxt>Was ist die Antwort auf alle Fragen?</qcatquestiontxt>
+        <allanswers>
+            <answer>42</answer>
+            <answer>43</answer>
+            <answer>44</answer>
+        </allanswers>
+        <correctanswers>
+            <correctanswer>42</correctanswer>
+        </correctanswers>
+    </qcatquestions>
+    <qcatquestions>
+        <qcatquestiontxt>Wozu mache ich das alles?</qcatquestiontxt>
+        <allanswers>
+            <answer>Zum Zeitvertreib</answer>
+            <answer>Zur Belustigung anderer</answer>
+        </allanswers>
+        <correctanswers>
+            <correctanswer>Zum Zeitvertreib</correctanswer>
+        </correctanswers>
+    </qcatquestions>
+</qcategory>
+<qcategory name="Schwimmen ohne Boot">
+    <qcatquestions>
+        <qcatquestiontxt>Was ist ein Boot?</qcatquestiontxt>
+        <allanswers>
+            <answer>b</answer>
+            <answer>a</answer>
+        </allanswers>
+        <correctanswers>
+            <correctanswer>a</correctanswer>
+        </correctanswers>
+    </qcatquestions>
+    <qcatquestions>
+        <qcatquestiontxt>Wo ist das Boot?</qcatquestiontxt>
+        <allanswers>
+            <answer>v</answer>
+            <answer>g</answer>
+        </allanswers>
+        <correctanswers>
+            <correctanswer>g</correctanswer>
+        </correctanswers>
+    </qcatquestions>
+    <qcatquestions>
+        <qcatquestiontxt>Wieso fahren wir Boot?</qcatquestiontxt>
+        <allanswers>
+            <answer>g</answer>
+            <answer>h</answer>
+        </allanswers>
+        <correctanswers>
+            <correctanswer>h</correctanswer>
+        </correctanswers>
+    </qcatquestions>
+    <qcatquestions>
+        <qcatquestiontxt>Worum geht es im Boot?</qcatquestiontxt>
+        <allanswers>
+            <answer>r</answer>
+            <answer>t</answer>
+        </allanswers>
+        <correctanswers>
+            <correctanswer>r</correctanswer>
+        </correctanswers>
+    </qcatquestions>
+</qcategory>
+<qcategory name="Wochenende"><qcatquestions><qcatquestiontxt>Wo ist Kälberwerder?</qcatquestiontxt><allanswers><answer>Havel</answer><answer>Spree</answer></allanswers><correctanswers><correctanswer>Havel</correctanswer></correctanswers></qcatquestions><qcatquestions><qcatquestiontxt>Wie komme ich nach Kälberwerder?</qcatquestiontxt><allanswers><answer>Rudern</answer><answer>Schwimmen</answer></allanswers><correctanswers><correctanswer>Rudern</correctanswer></correctanswers></qcatquestions><qcatquestions><qcatquestiontxt>Wird es regnen?</qcatquestiontxt><allanswers><answer>Nein</answer><answer>Ja </answer></allanswers><correctanswers><correctanswer>Nein</correctanswer></correctanswers></qcatquestions></qcategory><qcategory name="Fragen über Fragen"><qcatquestions><qcatquestiontxt>Was ist der Sinn des Lebens?</qcatquestiontxt><allanswers><answer>42</answer><answer>43</answer></allanswers><correctanswers><correctanswer>42</correctanswer></correctanswers></qcatquestions><qcatquestions><qcatquestiontxt>Wo soll das alles hinführen?</qcatquestiontxt><allanswers><answer>Keine Ahnung</answer><answer>Frag den Hausmeister</answer></allanswers><correctanswers><correctanswer>Frag den Hausmeister</correctanswer></correctanswers></qcatquestions></qcategory></qcategories>
