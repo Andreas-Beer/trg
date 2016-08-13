@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+  <head>
+    <title>History API</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <h1>History API</h1>
+    
+    <p>Links:</p>
+    <ul>
+      <li><a href="https://developer.mozilla.org/de/docs/Web/Guide/DOM/Manipulating_the_browser_history">MDN History API</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onpopstate">window.onpopstate</a></li>
+    </ul>
+    
+    <hr />
+    
+    <div>Current site: <span id="currSite"></span></div>
+    <br />
+    <div>Number of saved History Steps: <span id="nrSteps"></span></div>
+    <div>Current state: <span id="currState"></span></div>
+    
+    <script>
+            
+      function back (steps) {
+//        window.history.back();
+        window.history.go(-steps);
+      }
+      
+      function forward (steps) {
+//        window.history.forward();
+        window.history.go(steps);
+      }
+            
+      console.info(window.history);
+      console.info(window.history.state);
+      console.info(window.location.href);
+      
+      document.getElementById('nrSteps').innerHTML = window.history.length;
+      document.getElementById('currState').innerHTML = JSON.stringify(window.history.state);
+      document.getElementById('currSite').innerHTML = window.location.href;
+           
+      window.onpopstate = function () {
+        console.group('state poped!');
+          console.info("location: ",  document.location);
+          console.info("state: ", JSON.stringify(event.state));
+        console.groupEnd();
+      };
+      
+      history.pushState({page: "foo" }, 'page 2', "#foo");
+      history.back();
+//      history.pushState({page: 2}, 'bla', "#2");
+      
+//      history.pushState({page: 1}, '', "#1");
+//      history.pushState({page: 2}, '', "#2");
+//      history.pushState({page: 3}, '', "#3");
+//      history.replaceState({page: 2}, '', "#3a");
+//      
+//      history.pushState({page: 1}, "title 1", "?page=1");
+//      history.pushState({page: 2}, "title 2", "?page=2");
+//      history.replaceState({page: 3}, "title 3", "?page=3");
+//      history.back(); // alerts "location: http://example.com/example.html?page=1, state: {"page":1}"
+//      history.back(); // alerts "location: http://example.com/example.html, state: null
+//      history.go(2);  // alerts "location: http://example.com/example.html?page=3, state: {"page":3}
+
+      
+//      newTestState();
+      
+    </script>
+    
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+
+
+  function createRegExp (parts) {
+
+    var regExpString = '';
+
+    for (var i = 0; i < parts.length; i++) {
+
+      var item = parts[i];
+
+      if (item.charAt(0) === ':') {
+        regExpString += '(?:([^\/]*)\/)';
+
+      } else
+      if ( i < parts.length - 1 ) {
+          regExpString += item + '/';
+      }
+
+      if (item.charAt(item.length - 1) === '?') {
+        regExpString += '?'
+      }
+
+    }
+
+
+    return new RegExp(regExpString);
+
+  }
+
+
+  var route = '/pages/:sub?/:sub2/p2'
+
+  var parts = [
+    'pages',
+    ':sub?',
+    ':sub2',
+    'p2'
+  ];
+
+  var re1 = /pages\/(?:([^\/]*)\/)?(?:([^\/]*)\/)p2/;
+
+  var re  = createRegExp(parts);
+
+  console.log('')
+
+  console.log(re);
+  console.log(re);
+
+
+  var str_a = [
+    'pages',
+    'pages/5',
+    'pages/5/p2',
+    'pages/5/6/p2',
+    '/pages/5/6/p2/',
+    'pages/p2'
+  ]
+
+  console.log('-----------------------');
+  for (var i in str_a) {
+
+    var item = str_a[i];
+
+      console.group();
+      console.log(item);
+      console.log(re1.exec(item));
+      console.groupEnd();
+
+    }
+
+
+
+
+
+  </script>
+
+</body>
+</html>

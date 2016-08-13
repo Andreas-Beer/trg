@@ -1,0 +1,26 @@
+{
+  "name": "trg",
+  "version": "0.0.1",
+  "description": "the trg app",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Andreas-Beer/trg.git"
+  },
+  "keywords": [
+    "trg"
+  ],
+  "author": "Andreas Beer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Andreas-Beer/trg/issues"
+  },
+  "homepage": "https://github.com/Andreas-Beer/trg#readme",
+  "devDependencies": {
+    "chai": "3.5.0",
+    "mocha": "3.0.2"
+  }
+}

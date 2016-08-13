@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+
+    <a href=""  >Home</a> <br />
+    <a href="#1">Seite 1</a> <br />
+    <a href="#2">Seite 2</a> <br />
+    <a href="#3">Seite 3</a> <br />
+    <a href="#4">Seite 4</a> <br />
+
+    <br />
+
+    <div id="message"></div>
+
+    <script>
+
+      function changeSite() {
+
+        console.info(location);
+        console.info('hash:', location.hash);
+        console.info('search:', location.search);
+      
+        switch ( location.hash ) {
+
+          case '#1':
+            msg.innerHTML = 'Du bist auf seite 1';
+            break;
+          case '#2':
+            msg.innerHTML = 'Du bist auf seite 2';
+            break;
+          case '':
+            msg.innerHTML = 'Hast du dich verlaufen?';
+            break;
+          default:
+            msg.innerHTML = 'Hast du dich verlaufen? - Seite ' + location.hash.replace('#', '') + ' gibt es nicht.' ;
+        }
+      };
+      
+      var msg = document.getElementById('message');
+
+      window.onpopstate = function () {
+        console.group('onpopstate');
+          changeSite();
+        console.groupEnd();
+      };
+
+      window.onload = function () {
+        console.group('onload');
+         changeSite();
+        console.groupEnd();
+      };
+
+
+
+
+    </script>
+
+
+  </body> 
+</html>

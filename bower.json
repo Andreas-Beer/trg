@@ -1,0 +1,24 @@
+{
+  "name": "trg",
+  "description": "the trg app",
+  "main": "index.html",
+  "authors": [
+    "Andreas Beer"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "trg"
+  ],
+  "homepage": "https://github.com/Andreas-Beer/trg",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.12.3",
+    "jquery-ui": "^1.12.0"
+  }
+}
