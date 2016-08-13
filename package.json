@@ -20,7 +20,12 @@
   },
   "homepage": "https://github.com/Andreas-Beer/trg#readme",
   "devDependencies": {
+    "grunt": "1.0.1",
+    "mocha": "3.0.2",
     "chai": "3.5.0",
-    "mocha": "3.0.2"
+    "grunt-contrib-jshint": "1.0.0",
+    "grunt-contrib-watch": "1.0.0",
+    "grunt-mocha-test": "0.12.7",
+    "grunt-notify": "0.4.5"
   }
 }
