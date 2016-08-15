@@ -8,11 +8,11 @@ module.exports = function (grunt) {
     
     path: {
       src: [
-        '_playground/mocha/*'
+        '_playground/mocha/**/*.js'
       ],
       
       js_test: [
-        'test/js/mocha_try.test.js'
+        'test/js/**/*.js'
       ],
       
       js_prod: [
@@ -59,8 +59,8 @@ module.exports = function (grunt) {
       files: '<%= path.hint %>',
       tasks: [
         'jshint',
-        'mochaTest',
-        'uglify'
+        'mochaTest'
+//        'uglify'
       ]
     }
     
@@ -77,8 +77,5 @@ module.exports = function (grunt) {
     'jshint',
     'mochaTest:test'
   ]);
-  
-  grunt.registerTask('whatch_ugly', [
-    'uglify'
-  ]);
+
 };

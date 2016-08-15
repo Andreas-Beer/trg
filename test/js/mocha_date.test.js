@@ -2,7 +2,8 @@
 /*jshint expr: true*/
 
 var expect = require('chai').expect;
-var date = require('../../_playground/mocha/mocha_try');
+
+var date = require('../../_playground/mocha/mocha_date');
 
 describe('date', function () {
   describe('hasBirthday', function () {
@@ -21,4 +22,16 @@ describe('date', function () {
    });
    
   });
+  
+  describe('fromYyyyMmDd', function () {
+    
+    it('converts format YyyyMmDd to date Objects', function () {
+      var dateObject = date.fromYyyyMmDd('20131203');
+      expect(dateObject.getFullYear()).to.be.equal(2013);
+      expect(dateObject.getMonth()   ).to.be.equal(11);
+      expect(dateObject.getDate()    ).to.be.equal(3);
+    });
+    
+  });
+  
 });

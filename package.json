@@ -27,6 +27,8 @@
     "grunt-contrib-watch": "1.0.0",
     "grunt-mocha-test": "0.12.7",
     "grunt-notify": "0.4.5",
-    "mocha": "3.0.2"
+    "mocha": "3.0.2",
+    "rewire": "2.1.4",
+    "sinon": "1.8.2"
   }
 }
