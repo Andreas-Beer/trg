@@ -10,18 +10,28 @@ module.exports = function (grunt) {
       src: [
         '_playground/mocha/*'
       ],
-      test: [
+      
+      js_test: [
         'test/js/mocha_try.test.js'
       ],
-      lint: [
+      
+      js_prod: [
+        'app/js/model/**/*js',
+        'app/js/service/**/*js',
+        'app/js/app/**/*js'
+      ],
+      
+      hint: [
         'Gruntfile.js',
         '<%= path.src %>',
-        '<%= path.test %>'
+        '<%= path.js_test %>',
+        '<%= path.js_prod %>'
       ]
+      
     },
     
     jshint: {
-      files: '<%= path.lint %>',
+      files: '<%= path.hint %>',
       options: {
         jshintrc: true
       }
@@ -29,21 +39,36 @@ module.exports = function (grunt) {
     
     mochaTest: {
       test: {
-        src: '<%= path.test %>'
+        src: '<%= path.js_test %>'
+      }
+    },
+    
+    uglify: {
+      options: {
+        mangle: false,
+        beautify: true
+      },
+      my_target: {
+        files: {
+          'app/js/main.js': '<%= path.js_prod %>'
+        }
       }
     },
     
     watch: {
-      files: '<%= path.lint %>',
+      files: '<%= path.hint %>',
       tasks: [
         'jshint',
-        'mochaTest'
+        'mochaTest',
+        'uglify'
       ]
     }
+    
     
   });
   
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-notify');
@@ -51,5 +76,9 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'jshint',
     'mochaTest:test'
+  ]);
+  
+  grunt.registerTask('whatch_ugly', [
+    'uglify'
   ]);
 };

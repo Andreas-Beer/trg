@@ -8,6 +8,18 @@ var xmlData = (function () {
   };
   
   /**
+   * 
+   * @returns {cache.parsedXML|xmlData_L1.cache.parsedXML}
+   */
+  function getXML () {
+    if (cache.parsedXML !== null) {
+      return cache.parsedXML;
+    } else {
+      throw Error('no XML in chache!');
+    }
+  }
+  
+  /**
    * Layzy loading for the XML file
    * 
    * @param {string} file
@@ -31,7 +43,6 @@ var xmlData = (function () {
       cb(getXML());
     } else {
       $.get(file + '?v=' + Math.random(), function (data) {
-        console.info('new data');
         cache.parsedXML = parseXML(data);       
         cb(cache.parsedXML); 
       }); 
@@ -43,15 +54,6 @@ var xmlData = (function () {
     loadXML(cb);
   }
   
-  function getXML () {
-    if (cache.parsedXML !== null) {
-      console.info('cached data');
-      return cache.parsedXML;
-    } else {
-      throw Error('no XML in chache!');
-    }
-  }
-
   /**
    * Parses the XML Data into a datastructure
    * 
@@ -82,36 +84,81 @@ var xmlData = (function () {
    */
   function parseXML(xml) {
     
-    var questionAnswerCatalog = [];
+    /**
+     * @param {type} elm_cat
+     * @returns {QA_Manager}
+     */
+    var qa_Manager = new QA_Manager(
+            
+      $.map($(xml).find('qcategory'), function (elm_cat) {
+      
+        /**
+         * @type Category
+         */
+        var category = new Category();
+        category.name = $(elm_cat).attr('name');
+  //      category.uri = $(item).attr('uri');
+  //      category.catTag = $(item).attr('uri').slice( $(item).attr('uri').lastIndexOf('/') + 1,  $(item).attr('uri').length);
+        category.questions = $.map($(elm_cat).find('qcatquestiontxt'), function (elm_ques) {
 
-    $(xml).find('qcategory').each(function (index, item) {
+          /**
+           * @type Question
+           */
+          var question = new Question();
+          question.category = category;
+          question.text = $(elm_ques).text();
+          question.answers = $.map($(elm_ques).closest('qcatquestions').find('answer'), function (elm_ans) {
 
-      var qaItem = {};
-      qaItem.questions = [];
-      qaItem.catName = $(item).attr('name');
-      qaItem.catUri = $(item).attr('uri');
-      qaItem.catTag = $(item).attr('uri').slice( $(item).attr('uri').lastIndexOf('/') + 1,  $(item).attr('uri').length);
+            /**
+             * @type Answer
+             */
+            var answer = new Answer();
+            answer.text = $(elm_ans).text();
+            answer.correct = Boolean($.map($(elm_ans).closest('qcatquestions').find('correctanswer'), function (corrAns_elm) {
+                return $(elm_ans).text() === $(corrAns_elm).text() ? 1 : 0; 
+              }).reduce(function (a,b) { return a + b; }));
+            
+            return answer;
+          });
 
-      $(item).find('qcatquestions').each(function (index, item) {
-
-        var questionData = {};
-        questionData.question = $(item).find('qcatquestiontxt').text();
-
-        questionData.answers = $.map($(item).find('answer'), function (item) {
-          return $(item).text();
+          return question;
         });
 
-        questionData.correctAnswers = $.map($(item).find('correctanswer'), function (item) {
-          return $(item).text();
-        });
-
-        qaItem.questions.push(questionData);
-      });
-
-      questionAnswerCatalog.push(qaItem);
-    });
-
-    return questionAnswerCatalog;
+        return category;   
+      })
+              
+    );
+    
+//    console.info(qa_Manager);
+    
+//    $(xml).find('qcategory').each(function (index, item) {
+//
+//      var qaItem = {};
+//      qaItem.questions = [];
+//      qaItem.catName = $(item).attr('name');
+//      qaItem.catUri = $(item).attr('uri');
+//      qaItem.catTag = $(item).attr('uri').slice( $(item).attr('uri').lastIndexOf('/') + 1,  $(item).attr('uri').length);
+//
+//      $(item).find('qcatquestions').each(function (index, item) {
+//
+//        var questionData = {};
+//        questionData.question = $(item).find('qcatquestiontxt').text();
+//
+//        questionData.answers = $.map($(item).find('answer'), function (item) {
+//          return $(item).text();
+//        });
+//
+//        questionData.correctAnswers = $.map($(item).find('correctanswer'), function (item) {
+//          return $(item).text();
+//        });
+//
+//        qaItem.questions.push(questionData);
+//      });
+//
+//      questionAnswerCatalog.push(qaItem);
+//    });
+//
+//    return questionAnswerCatalog;
   }
 
 

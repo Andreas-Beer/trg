@@ -151,7 +151,7 @@ var router = function () {
     }
 
     cache.currUrl = null;
-    console.clear();
+//    console.clear();
     return this;
   }
 
