@@ -3,8 +3,8 @@ var xmlData = (function () {
   'use strict';
   
   var cache = {
-    XML: null,
-    file: null
+    parsedXML: null,
+    filePath: null
   };
   
   /**
@@ -18,35 +18,35 @@ var xmlData = (function () {
 
     if (typeof file === 'function') {
       cb = file;
-      file = cache.file;
+      file = cache.filePath;
     } else {
-      cache.file = file; 
+      cache.filePath = file; 
     }
 
     if (file === null) {
       throw Error('no file found!');
     }
         
-    if (cache.file === file && cache.XML !== null) {
+    if (cache.filePath === file && cache.parsedXML !== null) {
       cb(getXML());
     } else {
       $.get(file + '?v=' + Math.random(), function (data) {
         console.info('new data');
-        cache.XML = parseXML(data);       
-        cb(cache.XML); 
+        cache.parsedXML = parseXML(data);       
+        cb(cache.parsedXML); 
       }); 
     }
   }
   
   function reloadXML (cb) {
-    cache.XML = null;
+    cache.parsedXML = null;
     loadXML(cb);
   }
   
   function getXML () {
-    if (cache.XML !== null) {
+    if (cache.parsedXML !== null) {
       console.info('cached data');
-      return cache.XML;
+      return cache.parsedXML;
     } else {
       throw Error('no XML in chache!');
     }
@@ -58,27 +58,15 @@ var xmlData = (function () {
    * Structure:
    * [
    *    catName: string - The name of the category
-   *    questions: {
-   *      question:       string - The question in plain text
-   *      answers:        array  - []
-   *      correctAnswers: array  - []
-   *      }
-   *  ]
-   *  
-   * ---
-   * I would prefere:
-   * Structure:
-   * [
-   *    catName: string - The name of the category
    *    catType: string - (e.g. default, complex)
    *    catTag:  string
    *    
    *    questions: {
-   *      question: string - The question in plain text
+   *      text: string - The question in plain text
+   *      image:    string - an image which belongs to the question (optional)
    *      type:     string - mainly for styling (e.g. one answer, two answer, long text)
    *      points:   int    - points for the question (like in driving school?)
    *      infoLink: string - a website where the answer ist explained. (optional)
-   *      image:    string - an image which belongs to the question (optional)
    *      
    *      answers: {
    *        text:    string  - The answer in plain text (optional)
@@ -126,10 +114,11 @@ var xmlData = (function () {
     return questionAnswerCatalog;
   }
 
+
   return {
-    getXML: getXML,
-    loadXML: loadXML,
-    reloadXML: reloadXML
+    getData: getXML,
+    loadData: loadXML,
+    reloadData: reloadXML
   };
 
 })();
