@@ -9,7 +9,7 @@ $(function(){
   
   data.loadData('xml/fragen.xml', function (qa_Manager) {
     
-//    console.info(qa_Manager);
+    console.info(qa_Manager);
     
   });
   

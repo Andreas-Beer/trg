@@ -56,29 +56,6 @@ var xmlData = (function () {
   
   /**
    * Parses the XML Data into a datastructure
-   * 
-   * Structure:
-   * [
-   *    catName: string - The name of the category
-   *    catType: string - (e.g. default, complex)
-   *    catTag:  string
-   *    
-   *    questions: {
-   *      text: string - The question in plain text
-   *      image:    string - an image which belongs to the question (optional)
-   *      type:     string - mainly for styling (e.g. one answer, two answer, long text)
-   *      points:   int    - points for the question (like in driving school?)
-   *      infoLink: string - a website where the answer ist explained. (optional)
-   *      
-   *      answers: {
-   *        text:    string  - The answer in plain text (optional)
-   *        image:   string  - an image as answer or which belongs to the answer (optional)
-   *        correct: boolean - if the answer is the correct one
-   *      }
-   *    }
-   *  ]
-   *  ---
-   * 
    * @param {object} xml
    * @returns {Array|parseXML.questionAnswerCatalog}
    */
@@ -88,7 +65,7 @@ var xmlData = (function () {
      * @param {type} elm_cat
      * @returns {QA_Manager}
      */
-    var qa_Manager = new QA_Manager(
+    return new QA_Manager(
             
       $.map($(xml).find('qcategory'), function (elm_cat) {
       
@@ -97,8 +74,8 @@ var xmlData = (function () {
          */
         var category = new Category();
         category.name = $(elm_cat).attr('name');
-  //      category.uri = $(item).attr('uri');
-  //      category.catTag = $(item).attr('uri').slice( $(item).attr('uri').lastIndexOf('/') + 1,  $(item).attr('uri').length);
+        category.catTag = $(elm_cat).attr('name').toLowerCase().replace(/[-_ ]/ig , '_').replace(/[ö]/ig , 'oe').replace(/[ü]/ig , 'ue').replace(/[ä]/ig , 'ae');
+        category.uri = 'quiz/' + category.catTag;
         category.questions = $.map($(elm_cat).find('qcatquestiontxt'), function (elm_ques) {
 
           /**
@@ -114,10 +91,10 @@ var xmlData = (function () {
              */
             var answer = new Answer();
             answer.text = $(elm_ans).text();
-            answer.correct = Boolean($.map($(elm_ans).closest('qcatquestions').find('correctanswer'), function (corrAns_elm) {
-                return $(elm_ans).text() === $(corrAns_elm).text() ? 1 : 0; 
-              }).reduce(function (a,b) { return a + b; }));
-            
+            answer.correct = $(elm_ans).closest('qcatquestions').find('correctanswer').toArray().some(function (elm_corAns) {
+                  return $(elm_ans).text() === $(elm_corAns).text();
+              });
+    
             return answer;
           });
 
@@ -126,41 +103,8 @@ var xmlData = (function () {
 
         return category;   
       })
-              
     );
-    
-//    console.info(qa_Manager);
-    
-//    $(xml).find('qcategory').each(function (index, item) {
-//
-//      var qaItem = {};
-//      qaItem.questions = [];
-//      qaItem.catName = $(item).attr('name');
-//      qaItem.catUri = $(item).attr('uri');
-//      qaItem.catTag = $(item).attr('uri').slice( $(item).attr('uri').lastIndexOf('/') + 1,  $(item).attr('uri').length);
-//
-//      $(item).find('qcatquestions').each(function (index, item) {
-//
-//        var questionData = {};
-//        questionData.question = $(item).find('qcatquestiontxt').text();
-//
-//        questionData.answers = $.map($(item).find('answer'), function (item) {
-//          return $(item).text();
-//        });
-//
-//        questionData.correctAnswers = $.map($(item).find('correctanswer'), function (item) {
-//          return $(item).text();
-//        });
-//
-//        qaItem.questions.push(questionData);
-//      });
-//
-//      questionAnswerCatalog.push(qaItem);
-//    });
-//
-//    return questionAnswerCatalog;
   }
-
 
   return {
     getData: getXML,
