@@ -1,3 +1,4 @@
+
 function Category () {
   
   this.manager = {};
@@ -6,6 +7,5 @@ function Category () {
   this.uri = '';
   this.type = '';
   this.questions = [];
-  
   
 }

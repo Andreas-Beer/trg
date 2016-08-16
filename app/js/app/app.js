@@ -1,11 +1,11 @@
-/* global xmlData, logger, xmlParser */
+/* global xmlData, logger, xmlParser, config */
 
 $(function(){
 
   // init
   console = logger;
-  var data = xmlData;
-  data.setParser(xmlParser);
+  
+  var data = xmlData.setParser(xmlParser);
   
   data.loadData('xml/fragen.xml', function (qa_Manager) {
     startGame(qa_Manager);    
@@ -18,15 +18,8 @@ $(function(){
    */
   function startGame (qa_Manager) {
     
-    var questions = qa_Manager.getCategoryById('verantwortung').questions;
-    var q = questions[5];
-    
-    console.info(q);
-    console.info(q.index());
-    console.info(q.next());
-    
+    var t = new Question();
     
   }
   
- 
 });

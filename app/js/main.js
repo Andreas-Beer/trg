@@ -164,6 +164,13 @@ var gameData = function() {
         if (null !== cache.parsedXML) return cache.parsedXML;
         throw Error("no XML in chache!");
     }
+    
+    /**
+     * 
+     * @param {type} file
+     * @callback {function} cb
+     * @returns {undefined}
+     */
     function loadXML(file, cb) {
         if ("function" == typeof file ? (cb = file, file = cache.filePath) : cache.filePath = file, 
         null === file) throw Error("no file found!");

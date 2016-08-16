@@ -10,7 +10,7 @@ var xmlParser = (function () {
   function parseXml (xml) {
     
     /**
-     * @param {type} elm_cat
+     * @param {Object} elm_cat
      * @returns {QA_Manager}
      */
     return new QA_Manager(

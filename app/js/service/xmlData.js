@@ -20,6 +20,7 @@ var xmlData = (function () {
    */
   function setParser (p) {
     parser = p;
+    return this;
   }
   
   /**
