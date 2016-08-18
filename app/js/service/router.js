@@ -45,6 +45,7 @@ var router = function () {
    */
   function setDefaultRoute (fn) {
     defaultRoute = fn;
+    return this;
   }
 
   /**
@@ -58,33 +59,81 @@ var router = function () {
    */
   function addRoute (url, fn) {
     mappedRoutes.push({
-      url: parseURL(url),
-      fn: fn
+      parsedUrl: parseURL(url),
+      action: fn
     });
     return this;
   }
+    
 
   /**
    * Parses the url to an object
    * splits the url into its parts, couts the parts
+   * creates the regexp for the route
    *
    * @author Andreas Beer
    * @param   {string}   url [[Description]]
-   * @returns {[[Type]]} [[Description]]
+   * @returns {object} [[Description]]
    */
   function parseURL (url) {
+    
+    function createRegExp (parts) {
+
+      var regExpString = '^/#/';
+
+      for (var i = 0; i < parts.length; i++) {
+
+        var item = parts[i];
+
+        if (item.charAt(0) === ':') {
+          regExpString += '(?:([^\/]*)\/)';
+        } else
+        if ( i < parts.length - 1 ) {
+          regExpString += item + '/';
+        } else {
+          regExpString += item;
+        }
+
+        if (item.charAt(item.length - 1) === '?') {
+          regExpString += '?';
+        }
+
+        if ( i === parts.length - 1 ) {
+          regExpString += '/?$';
+        }
+      }
+      return new RegExp(regExpString);
+    }
 
     var parsedUrl = {}; 
-    parsedUrl.parts       = url.split('/');
-    parsedUrl.length      = parsedUrl.parts.length;
-    parsedUrl.params      = {};
-    parsedUrl.paramsCount = 0;
+    parsedUrl.url          = url;
+    parsedUrl.parts        = url.split('/');
+    parsedUrl.length       = parsedUrl.parts.length;
+    parsedUrl.params       = {};
+    parsedUrl.variables    = [];
+    parsedUrl.paramsCount  = 0;
+    parsedUrl.hasOptionals = url.match(/:[^?]+\?/) !== null;
 
     if(parsedUrl.parts[0] === '' || parsedUrl.parts[0] === '#') {
       parsedUrl.parts.shift();
       parsedUrl.length -= 1;
     }
+    if(parsedUrl.url.charAt(parsedUrl.url.length - 1) !== '/') {
+      parsedUrl.url += '/';
+    }
+    if(parsedUrl.url.charAt(0) !== '/') {
+      parsedUrl.url = '/' + parsedUrl.url;
+    }
 
+    for (var i = 0; i < parsedUrl.parts.length; i++) {
+      var item = parsedUrl.parts[i];
+      if (item.charAt(0) === ':') {
+        var variable = item.replace(':', '').replace('?', '');
+        parsedUrl.variables.push(variable);
+      }
+    }    
+    parsedUrl.matchString  = createRegExp(parsedUrl.parts);
+    
     return parsedUrl;
   }
 
@@ -96,30 +145,22 @@ var router = function () {
    * @returns {boolean / object} [[Description]]
    */
   function checkParsedUrl (parsedUrl) {
-
+    
     if (cache.currUrl === null) {
       cache.currUrl = parseURL(window.location.hash);
     }
-
-    if (parsedUrl.length !== cache.currUrl.length) {
+       
+    var match = parsedUrl.matchString.exec(cache.currUrl.url);
+    
+    if (match === null) {
       return false;
     }
 
-    for (var i = 0; i < parsedUrl.length; i++) {
-
-      var part1 = parsedUrl.parts[i];
-      var part2 = cache.currUrl.parts[i];
-
-      if(part1 !== part2 && part1[0] !== ':') {
-        return false;
+    for (var i = 0; i < match.splice(0,1).length; i++) {
+      if(match[i] !== undefined) {
+        parsedUrl.params[parsedUrl.variables[i]] = match[i];
       }
-
-      else if (part1[0] === ':') {
-        parsedUrl.params[part1.replace(':', '')] = part2;
-        parsedUrl.paramsCount += 1;
-      }
-    }  
-
+    }   
     return parsedUrl;
   }
 
@@ -129,15 +170,15 @@ var router = function () {
     var parsedURLs = [];
 
     for (var i = 0; i < mappedRoutes.length; i++) {
-
+      
       var mappedRoute = mappedRoutes[i];
-      var parsedURL = checkParsedUrl(mappedRoute.url);
+      var parsedURL = checkParsedUrl(mappedRoute.parsedUrl);
 
       if(parsedURL !== false) {
         match = true;
 
         parsedURLs.push({
-          fn:  mappedRoute.fn,
+          action:  mappedRoute.action,
           params: parsedURL.params,
           paramsCount: parsedURL.paramsCount
         });
@@ -151,7 +192,6 @@ var router = function () {
     }
 
     cache.currUrl = null;
-//    console.clear();
     return this;
   }
 
@@ -183,14 +223,14 @@ var router = function () {
 
     for (var j = 0; j < parsedURLs.length; j++) {
       var item = parsedURLs[j];
-      item.fn(item.params);
+      item.action(item.params);
     }
 
   }
 
   // Add the listener to register the change
   // for ie8 and all other browsers
-  (function IIFE_listen () {
+  function listen () {
     if (window.addEventListener) {
       window.addEventListener("hashchange", checkRoute, false);
       window.addEventListener("load", checkRoute, false);
@@ -198,15 +238,17 @@ var router = function () {
       window.attachEvent("onhashchange", checkRoute);
       window.attachEvent("onload", checkRoute);
     }
-
-  })();
+    checkRoute();
+    return this;
+  };
 
   // the router object
   return {
     settings: settings,
     checkRoute: checkRoute,
     when: addRoute,
-    otherwise: setDefaultRoute
+    otherwise: setDefaultRoute,
+    listen: listen
   };
 
 }();

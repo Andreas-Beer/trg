@@ -45,6 +45,7 @@ var router = function () {
    */
   function setDefaultRoute (fn) {
     defaultRoute = fn;
+    return this;
   }
 
   /**
@@ -271,7 +272,7 @@ var router = function () {
 
   // Add the listener to register the change
   // for ie8 and all other browsers
-  (function IIFE_listen () {
+  function startListen () {
     if (window.addEventListener) {
       window.addEventListener("hashchange", checkRoute, false);
       window.addEventListener("load", checkRoute, false);
@@ -279,15 +280,16 @@ var router = function () {
       window.attachEvent("onhashchange", checkRoute);
       window.attachEvent("onload", checkRoute);
     }
-
-  })();
+    return this;
+  };
 
   // the router object
   return {
     settings: settings,
     checkRoute: checkRoute,
     when: addRoute,
-    otherwise: setDefaultRoute
+    otherwise: setDefaultRoute,
+    startListen: startListen
   };
 
 }();

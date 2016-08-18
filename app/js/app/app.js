@@ -1,42 +1,54 @@
-/*global xmlData, logger, xmlParser, config, textData, hbsTamplates */
+/*global xmlData, logger, xmlParser, config, textData, hbsTemplates, router */
 
 $(function(){
 
   // init
   console = logger;
+
+  hbsTemplates
+    .scope(textData.de)
+    .setNamespace('JST');
   
-  hbsTamplates
-    .setNamespace('JST')
-    .setObjects(textData.de);
-  
-  var data = xmlData.setParser(xmlParser);
+  var dataLoader = new xmlDataLoader(xmlParser);
   
   //---------------------------------------
   
-  data.loadData('xml/fragen.xml', function (qa_Manager) {
-    
-    hbsTamplates.initTemplates();
+  dataLoader.loadData('xml/fragen.xml', function (qa_Manager) {
+    initRoutes();
+    hbsTemplates.initTemplates();
     startGame(qa_Manager);  
     
   });
   
-  function init () {
-    
-    
-  }
-  
-  /**
-   * 
-   * @param {QA_Manager} qa_Manager
-   * @returns {undefined}
-   */
-  function startGame (qa_Manager) {
-    
-    
-  }
-  
-  
-  
-  
-  
 });
+
+function initRoutes () {
+  
+  router
+    .when('quiz/:v/:nr?', function (param) {
+      
+      if(param.nr === undefined) {
+        param.nr = 0;
+      }
+    
+      console.info('quiz route:', '#/quiz/' + param.v + '/' + param.nr);
+
+    })
+    .otherwise(function () {
+      console.info('default!');
+    })
+    .listen();
+  
+}
+
+/**
+ * 
+ * @param {QA_Manager} qa_Manager
+ * @returns {undefined}
+ */
+function startGame (qa_Manager) {
+
+  hbsTemplates.scope().main.cats = qa_Manager.categories;
+  hbsTemplates.renderTemplate('main');
+
+}

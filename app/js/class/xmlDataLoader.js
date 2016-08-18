@@ -1,7 +1,7 @@
-var xmlData = (function () {
+function xmlDataLoader (xmlParser) {
 
   'use strict';
-  
+    
   var cache = {
     parsedXML: null,
     filePath: null
@@ -69,11 +69,13 @@ var xmlData = (function () {
     loadXML(cb);
   }
   
-  return {
-    setParser: setParser,
-    getData: getXML,
-    loadData: loadXML,
-    reloadData: reloadXML
-  };
-
-})();
+  function init (xmlParser) {
+    parser = xmlParser;
+  } init(xmlParser);
+  
+  this.setParser = setParser;
+  this.getData = getXML;
+  this.loadData = loadXML;
+  this.reloadData = reloadXML;
+  
+}
