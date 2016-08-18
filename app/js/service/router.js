@@ -64,7 +64,6 @@ var router = function () {
     });
     return this;
   }
-    
 
   /**
    * Parses the url to an object
