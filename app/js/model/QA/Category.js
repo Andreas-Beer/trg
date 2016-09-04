@@ -7,7 +7,7 @@ function Category () {
   this.uri = '';
   this.type = '';
   this.questions = [];
-  
+    
   this.index = function () {
     var cats = this.manager.categories;
     for ( var i = 0; i < cats.length; i++ ) {
@@ -15,6 +15,10 @@ function Category () {
         return i;
       }
     }
+  };
+  
+  this.nr = function () {
+    return +this.index() + 1;
   };
   
   this.hasQuestionNr = function (nr) {

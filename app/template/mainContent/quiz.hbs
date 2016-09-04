@@ -1,9 +1,12 @@
 <div id="containerBox" class="containerBox">
 
-  <div>{{question.text}}</div>
+  <div class="question">
+    <p>Frage {{info.curr}}/{{info.length}}</p>
+    <p>{{question.text}}</p>
+  </div>
   
   {{#each question.answers}}
-    {{> button_question}}
+    {{> button_answer}}
   {{/each}}
   
 </div>

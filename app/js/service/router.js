@@ -203,7 +203,7 @@ var router = function () {
 
   function exeFoundedRoutes (parsedURLs) {
 
-    console.clear();
+//    console.clear();
     
     if (settings.strict !== false) {
 

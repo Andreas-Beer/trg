@@ -1,11 +1,28 @@
 var textData = {
 
   de: {
+    
+    nav_bottom: {
+      visible: false,
+      buttons: {
+        cancel: {
+          text: 'Hauptmenü',
+          class: 'zurueckBtn',
+          link: '#/main'
+        },
+        next: {
+          text: 'Weiter zu Frage ',
+          nr: 0,
+          class: 'start',
+          link: '#/'
+        }
+      }
+    },
+    
     link: {
       prefix: 'quiz/'
     },
-    quiz: {},
-    main: {},
+    
     nav: {
       title: 'TRG',
       main: {
@@ -29,7 +46,7 @@ var textData = {
   en: {
     main: {},
     nav: {
-      title: 'TRJ',
+      title: 'TRG - en',
       main: {
         text: 'Steuer - & Obleute Quiz',
         link: '#/main'

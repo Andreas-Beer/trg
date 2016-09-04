@@ -22,6 +22,10 @@ function Question () {
       }
     }
   };
+  
+  this.nr = function () {
+    return +this.index() + 1;
+  };
     
   this.next = function () {
     return this.category.questions[this.index() + 1];

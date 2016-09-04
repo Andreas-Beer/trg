@@ -44,7 +44,7 @@ nav{
 }
 
 #myNavbar{
-    background: $color-main;
+    background: $color-navMain;
 }
 
 #menuTeil1{
@@ -287,7 +287,7 @@ nav{
 }
 
 .weiterBox{
-    background:$color-main;
+    background:$color-navMain;
     width:100%;
     height:9vh;
     text-align:center;
@@ -298,12 +298,13 @@ nav{
 
 
 .clickBox{
-    height:97%;
-    width:25%;
+    width:300px;
+    margin-top: 6px;
+    padding: 10px;
     color:white;
     border-radius:10px;
     border: 1px outset rgba(0,0,0,.7);
-    background:$color-main;
+    background:$color-navMain;
     text-align: center;
     font-size:3vh;
     font-family: "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
@@ -328,7 +329,7 @@ nav{
 
 .start{
     position:absolute;
-    left:73%;
+    right:2%;
 }
 
 .neustart{
@@ -419,7 +420,7 @@ nav{
     color:white;
     border-radius:10px;
     border: 1px outset rgba(0,0,0,.7);
-    background:$color-main;
+    background:$color-navMain;
     text-align: center;
     font-size:3vh;
     font-family: "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
@@ -526,7 +527,7 @@ nav{
 }*/
 
 .absendeBtn{
-    background:$color-main;
+    background:$color-navMain;
 }
 
 .fragenWrap{
@@ -551,7 +552,7 @@ nav{
     color:white;
     border-radius:10px;
     border: 1px outset rgba(0,0,0,.7);
-    _background:$color-main;
+    _background:$color-navMain;
     background: lightblue;
     text-align: center;
     font-size:3vh;

@@ -1,3 +1,27 @@
+.question {
+  background-color: lightblue;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.2em;
+}
+
+.answer {
+  background-color: lightblue;
+  margin: 10px 0;
+  padding-left: 15px;
+  padding-top: 10px;
+  border-radius: 5px;
+  font-size: 1.2em;
+}
+.answer:hover, .answer:focus {
+  background-color: lightcyan;
+}
+.answer .id {
+  position: relative;
+  padding-right: 1em;
+  font-size: 1.2em;
+}
+
 html, body {
   width: 100%;
   height: 100%;
@@ -288,8 +312,9 @@ nav {
 }
 
 .clickBox {
-  height: 97%;
-  width: 25%;
+  width: 300px;
+  margin-top: 6px;
+  padding: 10px;
   color: white;
   border-radius: 10px;
   border: 1px outset rgba(0, 0, 0, 0.7);
@@ -317,7 +342,7 @@ nav {
 
 .start {
   position: absolute;
-  left: 73%;
+  right: 2%;
 }
 
 .neustart {

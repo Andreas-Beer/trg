@@ -1,0 +1,30 @@
+.question {
+  
+  background-color: $color-btnQuiz;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  
+}
+
+.answer {
+  
+  background-color: $color-btnQuiz;
+  margin: 10px 0;
+  padding-left: 15px;
+  padding-top: 10px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  
+  &:hover,
+  &:focus {
+    background-color: $color-btnQuiz_hover;
+  }
+  
+  .id {
+    position: relative;
+    padding-right: 1em;
+    font-size: 1.2em;
+  }
+  
+}
