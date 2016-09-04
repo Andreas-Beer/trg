@@ -64,16 +64,16 @@ var logger = (function (out) {
    * @returns {logger_L6}
    */
   function clear () {
-    bypass('clear', arguments);
+    bypass.call(this, 'clear', arguments);
     return this;
   }
-  
+
   /**
    * 
    * @returns {logger_L6}
    */
   function log () {  
-    mutableBypass('log', arguments);
+    mutableBypass.call(this, 'log', arguments);
     return this;
   }
   
@@ -82,7 +82,7 @@ var logger = (function (out) {
    * @returns {logger_L6}
    */
   function info () {
-    mutableBypass('info', arguments);
+    mutableBypass.call(this, 'info', arguments);
     return this;
   }
   
@@ -91,7 +91,7 @@ var logger = (function (out) {
    * @returns {logger_L6}
    */
   function debug () {
-    mutableBypass('debug', arguments);
+    mutableBypass.call(this, 'debug', arguments);
     return this;
   }
   
@@ -100,7 +100,7 @@ var logger = (function (out) {
    * @returns {logger_L6}
    */
   function warn () {
-    mutableBypass('warn', arguments);
+    mutableBypass.call(this, 'warn', arguments);
     return this;
   }
   
@@ -109,7 +109,7 @@ var logger = (function (out) {
    * @returns {logger_L6}
    */
   function error () {
-    mutableBypass('error', arguments);
+    mutableBypass.call(this, 'error', arguments);
     return this;
   }
   
@@ -118,7 +118,7 @@ var logger = (function (out) {
    * @returns {logger_L6}
    */
   function group () {
-    mutableBypass('group', arguments);
+    mutableBypass.call(this, 'group', arguments);
     return this;
   }
   
@@ -127,7 +127,7 @@ var logger = (function (out) {
    * @returns {logger_L6}
    */
   function groupEnd () {
-    mutableBypass('groupEnd', arguments);
+    mutableBypass.call(this, 'groupEnd', arguments);
     return this;
   }
   
@@ -141,7 +141,7 @@ var logger = (function (out) {
    */
   function mutableBypass (fnName, args) {
     if (mute !== true) {
-      bypass(fnName, args);
+      bypass.call(this, fnName, args);
     }
   }
   
@@ -153,8 +153,15 @@ var logger = (function (out) {
    */
   function bypass (fnName, args) {
     for (var i = 0; i < outs.length; i++) {
-      if(outs[i][fnName]) {
-        outs[i][fnName].apply(this, sliceArgs(args));
+      var logger = outs[i];
+      if(logger[fnName]) {       
+        
+        // for IE8 problems with the console.
+        try{
+          logger[fnName].apply(logger, sliceArgs(args));
+        }catch(err){
+          logger['log'](err);
+        }
       }
     }
   }
@@ -175,13 +182,13 @@ var logger = (function (out) {
     removOutput: removeOutput,
     clearOutput: clearOutputs,
     
-    clear: clear, cls: clear, c: clear,
-    log: log, l: log,
-    info: info, i: info,
-    debug: debug, d: debug,
-    warn: warn, w: warn,
-    error: error, e: error, err: error,
-    group: group,
+    clear   : clear    , c: clear , cls: clear,
+    log     : log      , l: log   ,
+    info    : info     , i: info  ,
+    debug   : debug    , d: debug ,
+    warn    : warn     , w: warn  ,
+    error   : error    , e: error , err: error,
+    group   : group    ,
     groupEnd: groupEnd
   };
   

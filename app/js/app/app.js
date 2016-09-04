@@ -1,44 +1,80 @@
-/*global xmlData, logger, xmlParser, config, textData, hbsTemplates, router */
+/*global xmlData, logger, xmlParser, config, textData, hbsTemplates, router, Handlebars*/
 
 $(function(){
+  
+  'use strict';
 
   // init
   console = logger;
-
+  
   hbsTemplates
     .scope(textData.de)
     .setNamespace('JST');
+    
+    
+  Handlebars.registerHelper("offset", function (value, offset){
+      return value + offset;
+  });
   
   var dataLoader = new xmlDataLoader(xmlParser);
   
   //---------------------------------------
   
   dataLoader.loadData('xml/fragen.xml', function (qa_Manager) {
-    initRoutes();
-    hbsTemplates.initTemplates();
-    startGame(qa_Manager);  
-    
+    createScreen();  
+    initRoutes(qa_Manager);
   });
   
 });
 
-function initRoutes () {
+/**
+ * 
+ * @param {QA_Manager} qa_Manager
+ * @returns {undefined}
+ */
+function initRoutes (qa_Manager) {
   
   router
-    .when('quiz/:v/:nr?', function (param) {
+    .when('quiz/:catId/:nr', function (param) {
       
-      if(param.nr === undefined) {
-        param.nr = 0;
+      if (!qa_Manager.hasCategory(param.catId)) {
+        gotoDefaultPage();
+        return;
       }
-    
-      console.info('quiz route:', '#/quiz/' + param.v + '/' + param.nr);
 
+      var cat = qa_Manager.getCategoryById(param.catId);
+                   
+      if (param.nr > 0 && !cat.hasQuestionNr(param.nr)) {
+        gotoDefaultPage();
+        return;
+      }
+      
+      showCatQuestion(cat, +param.nr);   
+      
+    })
+    .when('main', function () {
+      showMain(qa_Manager);
     })
     .otherwise(function () {
-      console.info('default!');
+      window.location.href = '#/main';
     })
     .listen();
-  
+}
+
+/**
+ * 
+ * @returns {undefined}
+ */
+function createScreen () {
+  hbsTemplates.initTemplates();
+}
+
+/**
+ * 
+ * @returns {undefined}
+ */
+function gotoDefaultPage () {
+  window.location.href = '';
 }
 
 /**
@@ -46,9 +82,41 @@ function initRoutes () {
  * @param {QA_Manager} qa_Manager
  * @returns {undefined}
  */
-function startGame (qa_Manager) {
-
+function showMain (qa_Manager) {
   hbsTemplates.scope().main.cats = qa_Manager.categories;
-  hbsTemplates.renderTemplate('main');
+  switchMainContent('main');
+}
 
+function switchMainContent (name) {
+  $('#mainContent').attr('data-temp', name);
+  hbsTemplates.renderTemplate(name);
+}
+
+/**
+ * 
+ * @param {Category} currCat
+ * @returns {undefined}
+ */
+function showCatStart (currCat) {
+  console.i('Start Screen for:', currCat.name );
+}
+
+/**
+ * 
+ * @param {Category} currCat
+ * @param {Int} nr
+ * @returns {undefined}
+ */
+function showCatQuestion (currCat, nr) {
+  
+  if(nr === 0) {
+    showCatStart(currCat);
+    return;
+  }
+  
+  var currQuestion = currCat.questions[nr - 1];
+  var nextQuestion = currQuestion.next();
+   
+  hbsTemplates.scope().quiz.question = currQuestion;
+  switchMainContent('quiz');
 }

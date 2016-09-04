@@ -1,0 +1,9 @@
+<div id="containerBox" class="containerBox">
+
+  <div>{{question.text}}</div>
+  
+  {{#each question.answers}}
+    {{> button_question}}
+  {{/each}}
+  
+</div>

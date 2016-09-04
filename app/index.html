@@ -8,14 +8,21 @@
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/main.css"> 
-
+    
+    <!-- DEV -->
+    
+    <!-- vendor -->
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../bower_components/handlebars/handlebars.min.js"></script>
 
-    <!-- DEV -->
+    <!-- shim -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-shim.min.js"></script>
+    
+    <!-- templates -->
     <script src="js/view/hbs.js"></script>
     
+    <!-- service / module -->
     <script src="js/service/logger.js"></script>
     <script src="js/service/router.js"></script>
     <script src="js/service/xmlParser.js"></script>
@@ -23,12 +30,10 @@
     <script src="js/class/xmlDataLoader.js"></script>
     
     <script src="js/model/data/textData.js"></script>
-    
     <script src="js/model/QA/QA_Manager.js"></script>
     <script src="js/model/QA/Category.js"></script>
     <script src="js/model/QA/Question.js"></script>
     <script src="js/model/QA/Answer.js"></script>
-    
     
     <script src="js/presenter/hbsTemplates.js"></script>
     
@@ -36,7 +41,11 @@
 
   </head>
   <body>
+    <div data-temp="popup_container"></div>
     <div data-temp="nav"></div>
-    <div data-temp="main"></div>
+    <div class="mainBox" role="main"> 
+      <div id="mainContent" data-temp="main"></div>
+    </div>
+    <div data-temp="nav_bottom"></div>
   </body>
 </html>

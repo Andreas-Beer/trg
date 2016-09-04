@@ -24,15 +24,19 @@ body{
 }
 
 .mainBox{
-    position:absolute;
-    width:100%;    
+  width:100%;  
+  height:100%;  
+  max-width: 600px;
+  margin: auto;
+  margin-top: 60px;
 }
 
 .mainBoxImp{
     position:absolute;
     width:100%;
-    overflow:auto;
-    
+    margin:auto;
+    left: 0;
+    right: 0;
 }
 
 nav{
@@ -71,8 +75,7 @@ nav{
 .containerBox{
     width:100%;
     height:77%;
-    /*position:absolute;*/
-    
+
     list-style: none;
   
     display: -webkit-box;
@@ -288,8 +291,9 @@ nav{
     width:100%;
     height:9vh;
     text-align:center;
-    position:absolute;
+    position:fixed;
     border-top: 1px outset black;
+    bottom: 0;
 }
 
 

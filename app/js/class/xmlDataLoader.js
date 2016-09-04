@@ -1,7 +1,7 @@
 function xmlDataLoader (xmlParser) {
 
   'use strict';
-    
+  
   var cache = {
     parsedXML: null,
     filePath: null

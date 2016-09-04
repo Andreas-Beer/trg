@@ -100,7 +100,7 @@ var router = function () {
         if ( i === parts.length - 1 ) {
           regExpString += '/?$';
         }
-      }
+      }      
       return new RegExp(regExpString);
     }
 
@@ -154,12 +154,15 @@ var router = function () {
     if (match === null) {
       return false;
     }
-
-    for (var i = 0; i < match.splice(0,1).length; i++) {
+    
+    match.splice(0,1);
+    
+    for (var i = 0; i < match.length; i++) {
       if(match[i] !== undefined) {
         parsedUrl.params[parsedUrl.variables[i]] = match[i];
       }
     }   
+        
     return parsedUrl;
   }
 
@@ -200,6 +203,8 @@ var router = function () {
 
   function exeFoundedRoutes (parsedURLs) {
 
+    console.clear();
+    
     if (settings.strict !== false) {
 
       if(parsedURLs.length > 1) {

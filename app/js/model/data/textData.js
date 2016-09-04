@@ -4,6 +4,7 @@ var textData = {
     link: {
       prefix: 'quiz/'
     },
+    quiz: {},
     main: {},
     nav: {
       title: 'TRG',

@@ -1,10 +1,11 @@
-var hbsTemplates = (function () {
+
+var hbsTemplates = (function (global) {
   
   'use strict';
   
   var _scope = {};
   var namepace = 'JST';
-  var dataAttr = 'temp';
+  var dataAttrIdentifire = 'temp';
   var templates;
   
   function scope (value) {
@@ -18,45 +19,49 @@ var hbsTemplates = (function () {
   }
   
   function setNamespace (ns) { 
-    if (window[ns]) {
+    if (global[ns]) {
      namepace = ns;
       init();
     }
     return this;
   }
   
-  function setDataAttr (da) {
-    dataAttr = da;
+  function setDataAttrIdentifire (da) {
+    dataAttrIdentifire = da;
     init();
     return this;
   }
   
-  
   function init () {
-    templates = window[namepace];
+    templates = global[namepace];
   };
   
   function initTemplates() {  
     for (var name in templates) {  
       if(!_scope[name]) {
-        console.warn('! objcet objects.' + name, 'not found');
+        console.warn('! HBS: objcet objects.' + name, 'not found !');
       }
       renderTemplate (name);
     }
   }
   
-  function renderTemplate (tempName) {    
-    $('[data-' + dataAttr + '=' + tempName + ']').html(templates[tempName](_scope[tempName]));
+  function renderTemplate (tempName, scope) {   
+    scope = scope || _scope[tempName];
+    var elems = document.querySelectorAll('[data-' + dataAttrIdentifire + '=' + tempName + ']');
+    for ( var i = 0; i < elems.length; i++ ) {
+      elems[i].innerHTML = templates[tempName](scope);
+    }
+    
   }
 
   return {
     scope: scope,
     
     setNamespace: setNamespace,
-    setDataAttr: setDataAttr,
+    setDataAttrIdentifire: setDataAttrIdentifire,
     
     initTemplates: initTemplates,
     renderTemplate: renderTemplate
   };
   
-})();
+})(window || this);
